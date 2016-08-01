@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 
 from scrapy.crawler import CrawlerProcess
 
-from scrapy.spider import CrawlSpider
+from scrapy.spiders import CrawlSpider
 from scrapy.http import FormRequest
 from loginform import fill_login_form
 from scrapy.http import Request, TextResponse
@@ -14,7 +14,18 @@ import time
 
 def parse(html_doc):
     soup = BeautifulSoup(html_doc, 'html.parser')
-    return soup
+    rows = soup.find("table").find("tbody").find_all("tr")
+    items = []
+    for row in rows:
+        cells = row.find_all("td")
+        item = {
+            'team': cells[0].get_text(),
+            'RAG': cells[1].get_text(),
+            'summary': cells[2].get_text()
+        }
+        items.append(item)
+
+    return items
 
 
 def scrape(base_url, page, user, password):

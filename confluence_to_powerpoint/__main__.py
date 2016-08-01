@@ -1,8 +1,11 @@
 from __future__ import absolute_import
 import yaml
+import os
 
 from .scrape import scrape
 from .scrape import parse
+
+from .powerpoint import make_presentation
 
 settings = None
 with open('settings.cfg', 'r') as settings:
@@ -18,3 +21,4 @@ with open('table_dump.html', 'r') as table_dump:
 print ("Parsed table")
 
 print(parsed_table)
+make_presentation('output.pptx', parsed_table)
