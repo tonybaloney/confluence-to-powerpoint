@@ -1,0 +1,6 @@
+python-pptx
+beautifulsoup4
+scrapy
+pyyaml
+loginform
+selenium
