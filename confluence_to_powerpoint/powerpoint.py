@@ -7,7 +7,7 @@ def make_presentation(target_name, statuses):
         prs = Presentation('template.pptx')
     else:
         prs = Presentation()
-    bullet_slide_layout = prs.slide_layouts[1]
+    bullet_slide_layout = prs.slide_layouts[3]
 
     for status in statuses:
         slide = prs.slides.add_slide(bullet_slide_layout)
