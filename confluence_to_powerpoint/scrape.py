@@ -70,6 +70,7 @@ def scrape(base_url, page, user, password):
             time.sleep(4.5)
 
             el = sel.find_element_by_class_name('metadata-summary-macro')
+
             contents = el.get_attribute('innerHTML')
 
             with open('table_dump.html', 'w') as table_dump:
